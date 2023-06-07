@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS task (
     PRIMARY KEY (id)
 );
 INSERT INTO task (title, description) VALUES 
-('Task 1', 'Some description 1')
+('Task 1', 'Some description 1'),
 ('Task 2', 'Some description 2');
