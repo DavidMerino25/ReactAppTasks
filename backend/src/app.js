@@ -1,6 +1,10 @@
 import express from 'express';
+import cors from 'cors';
+import morgan from 'morgan';
 const app = express();
 import taskRoutes from './routes/tasks';
+app.use(cors());
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(taskRoutes);
 export default app;
