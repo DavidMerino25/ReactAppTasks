@@ -1,4 +1,26 @@
 @api = http://localhost:3000/tasks
 GET {{api}}
 ###
+GET {{api}}/6
+###
+GET {{api}}/count
+###
 POST {{api}}
+Content-Type: application/json
+
+{
+    "title": "Task 5",
+    "description": "some Description 5"
+}
+
+###
+DELETE {{api}}/3
+
+###
+PUT {{api}}/2
+Content-Type: application/json
+
+{
+    "title": "Learn about Selenium",
+    "description": "I want to learn about Selenium with Java"
+}

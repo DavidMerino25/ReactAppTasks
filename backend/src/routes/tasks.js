@@ -3,9 +3,9 @@ import {deleteTask, getTask, getTaskCount, getTasks, saveTask, updateTask} from 
 const router = Router();
 router.get('/tasks',getTasks)
 
-router.get('/tasks:count',getTaskCount)
+router.get('/tasks/count',getTaskCount)
 
-router.get('/tasks:id',getTask)
+router.get('/tasks/:id',getTask)
 
 router.post('/tasks',saveTask)
 
