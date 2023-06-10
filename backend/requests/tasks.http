@@ -1,7 +1,7 @@
 @api = http://localhost:3000/tasks
 GET {{api}}
 ###
-GET {{api}}/6
+GET {{api}}/5
 ###
 GET {{api}}/count
 ###
@@ -9,18 +9,18 @@ POST {{api}}
 Content-Type: application/json
 
 {
-    "title": "Task 5",
-    "description": "some Description 5"
+    "title": "Learn about Jira",
+    "description": "I want to learn about Jira for test"
 }
 
 ###
-DELETE {{api}}/3
+DELETE {{api}}/5
 
 ###
-PUT {{api}}/2
+PUT {{api}}/7
 Content-Type: application/json
 
 {
-    "title": "Learn about Selenium",
+    "title": "Learn about Anywhere",
     "description": "I want to learn about Selenium with Java"
 }
