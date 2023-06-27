@@ -12,16 +12,24 @@ const App = () => {
       <Stack.Navigator>
         <Stack.Screen name="HomeScreen"
           component={HomeScreen}
-          options={{
+          options={({ navigation }) => ({
+            title: 'Task App',
             headerStyle: { backgroundColor: '#7371fc' },
             headerTitleStyle: { color: '#f5efff' },
             headerRight: () => (
-              <TouchableOpacity onPress={() => console.log('pressed')} >
-                <Text style={{ color: '#f5efff', marginRight: 10 }}>New Task</Text>
+              <TouchableOpacity onPress={() => navigation.navigate('TaskFormScreen')} >
+                <Text style={{ color: '#f5efff', marginRight: 10, fontSize: 15, fontWeight: 'bold' }}>New Task</Text>
               </TouchableOpacity>
-            )
-          }} />
-        <Stack.Screen name="TaskFormScreen" component={TaskFormScreen} />
+            ),
+          })} />
+        <Stack.Screen name="TaskFormScreen" component={TaskFormScreen}
+          options={{
+            title: 'Create a Task',
+            headerStyle: { backgroundColor: '#7371fc' },
+            headerTitleStyle: { color: '#f5efff' },
+            headerTintColor: '#f5efff'
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
 
