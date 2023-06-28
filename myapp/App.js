@@ -17,7 +17,7 @@ const App = () => {
             headerStyle: { backgroundColor: '#7371fc' },
             headerTitleStyle: { color: '#f5efff' },
             headerRight: () => (
-              <TouchableOpacity onPress={() => navigation.navigate('TaskFormScreen')} >
+              <TouchableOpacity onPress={() => navigation.navigate('TaskFormScreen') } >
                 <Text style={{ color: '#f5efff', marginRight: 10, fontSize: 15, fontWeight: 'bold' }}>New Task</Text>
               </TouchableOpacity>
             ),
