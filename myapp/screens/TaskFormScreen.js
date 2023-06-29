@@ -1,24 +1,40 @@
-import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity} from 'react-native'
-import React from 'react'
+import { View, Text, TextInput, StyleSheet, Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
 import Layout from '../components/Layout'
-const TaskFormScreen = () => {
+import { saveTask } from '../api'
+const TaskFormScreen = ({navigation}) => {
+  const [task, setTask] = useState({
+    title: '',
+    description: ''
+  })
+
+  const handleChange = (name, value) => setTask({ ...task, [name]: value })
+  const handleSubmit = () => {
+    saveTask(task)
+    navigation.navigate('HomeScreen')
+  }
+
   return (
     <Layout>
       <TextInput
-        style={styles.inputTitle }
+        style={styles.inputTitle}
         placeholder="Write a Title"
         placeholderTextColor={'#e5d9f2'}
-        />
-      <TextInput 
-      style={styles.input}
-      placeholder="Write a description" 
-      placeholderTextColor={'#e5d9f2'}/>
+        onChangeText={(text) => handleChange('title', text)}
 
-      <TouchableOpacity style={styles.buttonSave}>
-        <Text style={styles.buttonSave_Text}>Create Task</Text>
+      />
+      <TextInput
+        style={styles.input}
+        placeholder="Write a description"
+        placeholderTextColor={'#e5d9f2'}
+        onChangeText={(text) => handleChange('description', text)} />
+
+
+      <TouchableOpacity style={styles.buttonSave} onPress={handleSubmit} >
+        <Text style={styles.buttonSave_Text}>Save Task</Text>
       </TouchableOpacity>
-      
-      <Image source={require('../assets/icontask.png')} style={{width: 400, height: 400, alignSelf: 'center'}} />
+
+      <Image source={require('../assets/icontask.png')} style={{ width: 400, height: 400, alignSelf: 'center' }} />
     </Layout>
   )
 }
@@ -35,9 +51,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     elevation: 5,
-    shadowColor: '#7371fc', 
-    shadowOpacity: 1, 
-    shadowRadius: 1.5, 
+    shadowColor: '#7371fc',
+    shadowOpacity: 1,
+    shadowRadius: 1.5,
     shadowOffset: { width: 0, height: 2 },
     textAlign: 'center'
   },
@@ -52,9 +68,9 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     elevation: 5,
-    shadowColor: '#7371fc', 
-    shadowOpacity: 1, 
-    shadowRadius: 1.5, 
+    shadowColor: '#7371fc',
+    shadowOpacity: 1,
+    shadowRadius: 1.5,
     shadowOffset: { width: 0, height: 2 },
     textAlign: 'center'
   },
