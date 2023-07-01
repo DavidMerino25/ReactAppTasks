@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, TouchableOpacity } from "react-native";
+import { Text, TouchableOpacity, Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from "./screens/HomeScreen";
@@ -18,7 +18,7 @@ const App = () => {
             headerTitleStyle: { color: '#f5efff' },
             headerRight: () => (
               <TouchableOpacity onPress={() => navigation.navigate('TaskFormScreen') } >
-                <Text style={{ color: '#f5efff', marginRight: 10, fontSize: 15, fontWeight: 'bold' }}>New Task</Text>
+               <Image source={require('./assets/add.png')} style={{width: 35, height: 35, marginRight: 10}}/>
               </TouchableOpacity>
             ),
           })} />
