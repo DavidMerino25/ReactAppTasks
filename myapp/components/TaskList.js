@@ -1,7 +1,7 @@
 import { FlatList, RefreshControl } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import TaskItem from './TaskItem'
-import { getTasks } from "../api";
+import { getTasks, deleteTask } from "../api";
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const TaskList = () => {
@@ -17,8 +17,12 @@ const TaskList = () => {
         loadTasks()
     }, []);
 
+    const handleDelete = async (id) => {
+        await deleteTask(id)
+        await loadTasks()
+    }
     const renderItem = ({ item }) => {
-        return <TaskItem task={item} />
+        return <TaskItem task={item} handleDelete={handleDelete} />
     }
     const onRefresh = React.useCallback(async () => {
         setRefresing(true)
@@ -29,7 +33,7 @@ const TaskList = () => {
 
     return (
         <FlatList
-            style={{ width: '100%', backgroundColor: '#fff', padding: 10, borderRadius: 8, marginTop: 10, marginBottom: 10}}
+            style={{ width: '100%', backgroundColor: '#fff', paddingHorizontal:10 , borderRadius: 8, marginTop: 10, marginBottom: 10}}
             data={tasks}
             keyExtractor={(item) => item.id + ''}
             renderItem={renderItem}
